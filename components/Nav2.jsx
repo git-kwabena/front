@@ -53,7 +53,7 @@ const Nav = () => {
                 <div className='flex gap-3 md:gap-3'>
                 <SignInButton mode='modal'>    
                     <button
-                        type='button'
+                        type='button' 
                         className='outline_btn'
                     >
                          Sign In
