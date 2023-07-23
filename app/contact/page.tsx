@@ -98,10 +98,12 @@ export default function ContactForm() {
 		</form>
         
             {
-                error && error.map((e)=> (
+                error && error.map((e, index)=> (
+					<div key={index}>
                     <div className="p-5 bg-slate-100 flex flex-col">
                     <div className={`${success? "text-green-800": 'text-red-500'} px-5 py-3`}>{e}</div>
                     </div>
+					</div>
                 ))
             }  
         
