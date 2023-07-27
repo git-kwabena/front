@@ -28,10 +28,10 @@ const Nav = () => {
         </Link>
         
         {/*Desktop Nav */}
-        <div className='sm:flex hidden'>
+        <div className='md:flex hidden'>
             <SignedIn>
                 <>
-                <ul className='hidden lg:flex '>
+                <ul className='hidden md:flex '>
                 <Link
                 href='/'
                 ><li className='mx-10 p-2'>Home</li></Link>    
@@ -46,7 +46,7 @@ const Nav = () => {
             </SignedIn>
             <SignedOut>
                <>
-                <ul className='hidden lg:flex '>
+                <ul className='hidden md:flex '>
                 <Link href='/'><li className='mx-10 p-2'>Home</li></Link>
                 <Link href='/contact'><li className='mx-10 p-2'>Contact</li></Link>
                 </ul>
@@ -67,7 +67,7 @@ const Nav = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <div className='sm:hidden flex relative '>
+        <div className='md:hidden flex relative '>
             <SignedIn>
                 <>
                 <div className='flex gap-2'>

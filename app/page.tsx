@@ -7,6 +7,7 @@ import CostCalculator from '@/components/CostCalculator/CostCalculator'
 import Features from '@/components/Features'
 import Banner from '@/components/Banner'
 import { SignedOut } from '@clerk/nextjs';
+import SearchBar from '@/components/SearchBar'
 
 export default function Home() {
   return (
@@ -28,7 +29,8 @@ export default function Home() {
               <div className='pt-44 pb-36 text-center text-black'>
                 <h1 className='text-5xl pb-5 '>Welcome to</h1>
                 <h1 className='text-3xl pb-4'>24/7 BRACE TRADING ENTERPRISE</h1>
-                <div className='space-x-6'>
+                <SearchBar/>
+                {/* <div className='space-x-6'>
                 <form action="" className='w-full max-w-md'>
                 <div className='relative flex items-center text-gray-400 focus-within:text-gray-600'>
                 <input  
@@ -45,7 +47,7 @@ export default function Home() {
                 </button>
                   </div>
                 </form>
-              </div>
+              </div> */}
               </div>
               
             </div>
