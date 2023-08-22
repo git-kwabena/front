@@ -85,11 +85,11 @@ const Track = () => {
         ) : (<>
         
             {
-            searchResults.map((item) => {
+            searchResults.map((item,index) => {
             if(search === item.shipmentID  ) {
             return(<>
             <h2 className='mx-auto px-10'>Search Results for Tracking Number: {search}</h2>     
-            <div key={item._id}>
+            <div key={index}>
       <section className='block py-11'>
         <div className='mx-auto px-4'>
             <div className='flex flex-row mx-4'>
@@ -464,6 +464,7 @@ const Track = () => {
                     <div className='flex flex-col justify-center items-center'>
                         <Image
                         src='/assets/img/ohh_shipment_rate.png'
+                        alt='ERRor Image'
                         width={200}
                         height={200}
                         className='items-center'
