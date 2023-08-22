@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import {useRouter, useSearchParams} from 'next/navigation'
 import data from "../models/data"
 import Image from 'next/image'
@@ -9,39 +9,87 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Track = () => {
+    const[shipments, setShipments] = useState([])
+    const [filteredShipments, setFilteredShipments] = useState([])
+    useEffect(()=>{
+        //fetch shipment details from api
+        const getShipments = async () => {
+        fetch('api/track',{
+            method:'GET',
+            headers:{
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response =>response.json())
+        .then(data=>{
+            if(data.success){
+                setShipments(data.shipments)
+                setFilteredShipments(data.shipments)
+            }else{
+                console.error('Failed to fetch shipment details:', data)
+            }
+        })
+        .catch(error=>{
+            console.error('An error occurred:', error)
+        })
+        }
+        getShipments()
+    }, [])
+
+    
     const searchParams = useSearchParams()
     const search = searchParams.get('search')
     /// Function to filter data based on search query
-    const filterData = (searchTerm) => {
-        return data.filter(
-            (item) => 
-            item.shipmentID.toLowerCase().includes(searchTerm.toLowerCase())  
-        )
-    }
-    const searchResults = filterData(search)
+    // const filterData = (searchTerm) => {
+    //     //return data.filter(
+    
+    //     return shipments.filter( 
+    //         (item) => 
+    //         item.shipmentID.toLowerCase().includes(searchTerm.toLowerCase())  
+    //     )
+        
+    // }
+    useEffect(() => {
+        // Filter the shipments based on the search term
+        const filteredData = shipments.filter(item =>
+            item.shipmentID.toLowerCase().includes(search.toLowerCase())
+        );
+        setFilteredShipments(filteredData);
+    }, [search, shipments]);
+    const searchResults = filteredShipments
   return (
     <div>
-        { searchResults.length === 0 ?
-        (
-            <div className='block mx-auto p7 w-screen h-screen'>
-            <div className='flex flex-col justify-center py-6 items-center'>
-                <Image
-                src='/assets/img/ohh_shipment_rate.png'
-                width={200}
-                height={200}
-                className='items-center'
-                />
-            <p>Tracking Number:{search}, Not found</p>
-            <p>Check the number or <Link href="/contact">Contact Us</Link></p>
-            </div>
-            </div>
-        )
-        : (<div>
-        <h2 className='mx-auto px-10'>Search Results for: {search}</h2>
-      
-        {searchResults.map((item) => (
-          
-        <div key={item.id}>
+        
+        {searchResults.length === 0  ? (
+            (
+                // <div className='flex items-center justify-center  h-screen'>
+                //     <div className='flex flex-col justify-center items-center'>
+                //         <Image
+                //         src='/assets/img/ohh_shipment_rate.png'
+                //         width={200}
+                //         height={200}
+                //         className='items-center'
+                //         />
+                //     <p className='pt-3'>Tracking Number:  {search}</p>
+                //     <p className='pt-3'>Not Found</p>
+                //     <p className='pt-3'>Check the number or</p>
+                //     <Link href="/contact"
+                //     className="rounded-lg bg-blue-200 py-2 px-2 text-center shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+                //     >Contact Us</Link>
+                //     </div>
+                //     </div>
+                <div className='min-h-screen'></div>
+            
+            )
+
+        ) : (<>
+        
+            {
+            searchResults.map((item) => {
+            if(search === item.shipmentID  ) {
+            return(<>
+            <h2 className='mx-auto px-10'>Search Results for Tracking Number: {search}</h2>     
+            <div key={item._id}>
       <section className='block py-11'>
         <div className='mx-auto px-4'>
             <div className='flex flex-row mx-4'>
@@ -374,6 +422,32 @@ const Track = () => {
                                 </div>
                             </div>
                         </div>)}
+                        {item.paymentReceived &&(
+                        <div className='relative py-3 my-4 px-5 border-l-2 border-l-green-600'>
+                            <div className='flex flex-wrap -mx-4'>
+                                <div className='relative w-[100%] min-h-[1px] px-4'>
+                                    <p className='text-base leading-none mt-2 text-left '>{item.paymentReceivedDate}</p>
+                                    <h6 className='font-extrabold'>{item.paymentReceived}</h6>
+                                    {/* <button className='rounded-md border-gray border-2 p-1'>Comments</button> */}
+                                </div>
+                                <div className='relative w-[100%] min-h-[1px] px-4'>
+                                    <p className='text-base leading-none mt-2 text-right '>{item.paymentReceivedTime}</p>
+                                </div>
+                            </div>
+                        </div>)}
+                        {item.pendingPayment &&(
+                        <div className='relative py-3 my-4 px-5 border-l-2 border-l-green-600'>
+                            <div className='flex flex-wrap -mx-4'>
+                                <div className='relative w-[100%] min-h-[1px] px-4'>
+                                    <p className='text-base leading-none mt-2 text-left '>{item.pendingPaymentDate}</p>
+                                    <h6 className='font-extrabold'>{item.pendingPayment}</h6>
+                                    {/* <button className='rounded-md border-gray border-2 p-1'>Comments</button> */}
+                                </div>
+                                <div className='relative w-[100%] min-h-[1px] px-4'>
+                                    <p className='text-base leading-none mt-2 text-right '>{item.pendingPaymentTime}</p>
+                                </div>
+                            </div>
+                        </div>)}
                         </div>
                     </div>
                     </div>
@@ -382,11 +456,36 @@ const Track = () => {
             </div>
         </div>
       </section>
-      </div>
-      ))}
-      </div>
+            </div>
+            </>
+      )} else {
+        return(
+            <div className='flex items-center justify-center  h-screen'>
+                    <div className='flex flex-col justify-center items-center'>
+                        <Image
+                        src='/assets/img/ohh_shipment_rate.png'
+                        width={200}
+                        height={200}
+                        className='items-center'
+                        />
+                    <p className='pt-3'>Tracking Number:  {search}</p>
+                    <p className='pt-3'>Not Found</p>
+                    <p className='pt-3'>Check the number or</p>
+                    <Link href="/contact"
+                    className="rounded-lg bg-blue-200 py-2 px-2 text-center shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm"
+                    >Contact Us</Link>
+                    </div>
+                    </div>
         )
+      }
+
+       })
         }
+        </>
+        )
+       
+       }
+        
     </div>
   )
 }

@@ -205,7 +205,7 @@ const countries = [
 
 
 
-const Contact = () => {
+const CostCalc = () => {
     const [originZip, setOriginZip] = useState('');
     const [destinationZip, setDestinationZip] = useState('');
     const [originCity, setOriginCity] = useState('')
@@ -561,4 +561,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default CostCalc

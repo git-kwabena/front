@@ -45,10 +45,16 @@ const data = [
         onRouteUS:"On Route - United States, Los Angeles, CA",
         onRouteUSTime:"02:25 pm",
         onRouteUSDate:"29 June, 2023",
+        pendingPayment:"Order Received Pending Payment",
+        pendingPaymentDate:"6 April 2023",
+        pendingPaymentTime:"02:25 pm",
+        paymentReceived:"Payment Received",
+        paymentReceivedDate:"6 April 2023",
+        paymentReceivedTime:"03:00 pm",
 
     },
     {
-        id:1,
+        id:2,
         description:"Hello",
         shipmentID:'BTSBTSAWB5775873638470',
         senderCountry:'GHANA',

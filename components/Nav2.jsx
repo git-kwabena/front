@@ -37,7 +37,8 @@ const Nav = () => {
                 ><li className='mx-10 p-2'>Home</li></Link>    
                 
                 <Link href='/contact'><li className='mx-10 p-2'>Contact</li></Link>
-                <Link href='/dashboard'><li className='mx-10 p-2'>Dashboard</li></Link>
+                <Link href='/costcalc'><li className='mx-10 p-2'>Price Calculator</li></Link>
+                <Link href='/door-to-door'><li className='mx-10 p-2'>Ship Item</li></Link>
                 </ul>
                 <div className='flex gap-3 md:gap-5'>
                     <UserButton afterSignOutUrl='/' />
@@ -106,9 +107,16 @@ const Nav = () => {
                 </Menu.Item>
                 <Menu.Item>
                 <Link
-                href="/dashboard"
+                href="/costcalc"
                 className='dropdown_link '>
-                Dashboard
+                Price Calculator
+                </Link>
+                </Menu.Item>
+                <Menu.Item>
+                <Link
+                href="/door-to-door"
+                className='dropdown_link '>
+                Ship Item
                 </Link>
                 </Menu.Item>
                 </div>
