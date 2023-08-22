@@ -61,7 +61,7 @@ const Payment = () => {
  <div className="flex flex-wrap -mx-4 py-1">
  <div className="w-1/2">
  <b>
- Int'l Shipping Cost:
+ International Shipping Cost:
  </b>
  </div>
  <div className="w-1/2">${shippingCost}</div>

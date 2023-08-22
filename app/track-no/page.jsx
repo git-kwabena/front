@@ -57,6 +57,7 @@ const Track = () => {
         setFilteredShipments(filteredData);
     }, [search, shipments]);
     const searchResults = filteredShipments
+    
   return (
     <div>
         
@@ -88,8 +89,9 @@ const Track = () => {
             searchResults.map((item) => {
             if(search === item.shipmentID  ) {
             return(<>
-            <h2 className='mx-auto px-10'>Search Results for Tracking Number: {search}</h2>     
-            <div key={item.id}>
+                 
+            <div key={item._id}>
+        <h2 className='mx-auto px-10'>Search Results for Tracking Number: {search}</h2>
       <section className='block py-11'>
         <div className='mx-auto px-4'>
             <div className='flex flex-row mx-4'>
