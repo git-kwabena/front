@@ -104,11 +104,11 @@ const Payment = () => {
  <div className="w-3/4">{finalData.shipmentID} </div>
  </div>
 
- <div className="flex flex-wrap -mx-4">&nbsp;&nbsp;&nbsp;&nbsp;
+ <div className="flex flex-wrap -mx-4">
  <strong className="text-red-600">If actual weight wasn’t provided, you may be billed or refunded any differences in price or shipping upon review</strong>
  
  </div>
- <div className="flex flex-wrap -mx-4">&nbsp;&nbsp;&nbsp;&nbsp;
+ <div className="flex flex-wrap -mx-4">
  <strong className="text-blue-500"> Please Note down your TRACKING NUMBER and contact us for payment </strong>
  
  </div>
