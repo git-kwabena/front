@@ -85,11 +85,11 @@ const Track = () => {
         ) : (<>
         
             {
-            searchResults.map((item,index) => {
+            searchResults.map((item) => {
             if(search === item.shipmentID  ) {
             return(<>
             <h2 className='mx-auto px-10'>Search Results for Tracking Number: {search}</h2>     
-            <div key={index}>
+            <div key={item._id}>
       <section className='block py-11'>
         <div className='mx-auto px-4'>
             <div className='flex flex-row mx-4'>

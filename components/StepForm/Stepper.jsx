@@ -18,7 +18,7 @@ const Stepper = ({ steps, currentStepNumber }) => {
 	useEffect(() => {
 		const currentSteps = updateStep(currentStepNumber - 1, stepsStateRef.current)
 		setStep(currentSteps)
-	}, [currentStepNumber]);
+	}, [currentStepNumber,steps]);
 	function updateStep(stepNumber, steps) {
 		const newSteps = [...steps];
 		let stepCounter = 0;

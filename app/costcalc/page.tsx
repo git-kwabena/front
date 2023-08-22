@@ -252,7 +252,7 @@ const CostCalc = () => {
               }
           })
       }
-  }, [originZip])
+  }, [])
 
   useEffect(()=>{
     // Validate zip code format
@@ -277,7 +277,7 @@ const CostCalc = () => {
             
         })
     }
-}, [destinationZip])
+}, [])
 
   
   const fetchData = async () => {

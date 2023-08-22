@@ -10,7 +10,7 @@ import PickUpAddress from '@/components/StepForm/Steps/PickUpAddress'
 import React, { useEffect, useState } from 'react'
 import data from '../models/data';
 
-const page = () => {
+const Page = () => {
     
     const [currentStep, setCurrentStep] = useState(1)
     const [userData, setUserData] = useState([])
@@ -60,7 +60,7 @@ const page = () => {
         pendingPayment:"Order Received Pending Payment",
         pendingPaymentDate: currentDate,
     }))
-    },[])
+    },[currentDate,newTrackingNumber])
     
     const submitData= async() =>{
        // setFinalData(userData)
@@ -144,4 +144,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
