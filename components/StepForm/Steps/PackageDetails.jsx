@@ -45,7 +45,7 @@ const PackageDetails = () => {
       </div>
       <div className=''>
       <label className="flex flex-col">
-                Total Weight (kg):
+                Total Weight (kg) :
                 <div className='relative'>
                 <input type="number" 
                 onChange={handleChange}
@@ -57,7 +57,7 @@ const PackageDetails = () => {
                 </div>
       </label>
       <label className="flex flex-col">
-                Product Description:
+                Product Description :
                 <div className='relative'>
                 <textarea
 					        rows={4}
